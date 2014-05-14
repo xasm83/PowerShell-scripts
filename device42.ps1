@@ -18,7 +18,7 @@ Param(
 )
 
 
-[System.Net.ServicePointManager]::ServerCertificateValidationCallback = $null
+[System.Net.ServicePointManager]::ServerCertificateValidationCallback = {$true}
 $base64Credentials = [System.Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes("$User`:$Password"))
 $client = new-object System.Net.WebClient
 $client.Headers.Add("Content-Type", "application/x-www-form-urlencoded")
